@@ -1,7 +1,7 @@
-# This is generic wc.py initiator. You can change this file to your project by wc.py viewer or by hand.
-# If you want to you can sign here your project name:Legaccalc :D
+# This is generic wc.py initiator. You can change this file to your project.
+# If you want to you can sign here your project name:_____
 # Language of initiator: ENGLISH
-# L E G A C C A L C
+# This WC.Py supports WCSG! 
 import sys
 import os
 import json
