@@ -1,0 +1,59 @@
+load standrt_gui
+wcsgstart
+minipaint 600, 640, "#101418"
+set body = [[10, 10], [9, 10], [8, 10]]
+set dx = 1
+set dy = 0
+set score = 0
+set alive = True
+set apple = [random(0, 19), random(0, 19)]
+makeuserdoright apple in body
+    set apple = [random(0, 19), random(0, 19)]
+end
+makeuserdoright alive
+    clear
+    rect 0, 40, 600, 600, "#1b222a"
+    circle apple[0] * 30 + 15, apple[1] * 30 + 55, 12, "#ff5252"
+    draw seg in body
+        rect seg[0] * 30 + 1, seg[1] * 30 + 41, 28, 28, "#3ddc84"
+    end
+    rect body[0][0] * 30 + 1, body[0][1] * 30 + 41, 28, 28, "#b9f6ca"
+    speaksymbols 12, 8, "Score: " + str(score), "white", 18
+    set key = waitkey(120)
+    if key == "Escape"
+        forcequit
+    end
+    if key == "Up" and dy == 0
+        set dx = 0
+        set dy = -1
+    end
+    if key == "Down" and dy == 0
+        set dx = 0
+        set dy = 1
+    end
+    if key == "Left" and dx == 0
+        set dx = -1
+        set dy = 0
+    end
+    if key == "Right" and dx == 0
+        set dx = 1
+        set dy = 0
+    end
+    set head = [body[0][0] + dx, body[0][1] + dy]
+    if head[0] < 0 or head[0] > 19 or head[1] < 0 or head[1] > 19 or head in body
+        set alive = False
+        forcequit
+    end
+    make body.insert(0, head)
+    if head == apple
+        set score = score + 1
+        set apple = [random(0, 19), random(0, 19)]
+        makeuserdoright apple in body
+            set apple = [random(0, 19), random(0, 19)]
+        end
+    else
+        make body.pop()
+    end
+end
+Error_window ] title "Game over" ] speak ("Score: " + str(score))
+wcsgstophere

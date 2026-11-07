@@ -1,0 +1,20 @@
+{
+  "say": "say",
+  "set": "set",
+  "ask": "ask",
+  "if": "if",
+  "else": "else",
+  "end": "end",
+  "while": "makeuserdoright",
+  "for": "draw",
+  "break": "forcequit",
+  "do": "make",
+  "canvas": "minipaint",
+  "text": "speaksymbols",
+  "load": "load",
+  "gui_start": "wcsgstart",
+  "gui_stop": "wcsgstophere",
+  "force_noecho": "force_noecho",
+  "comment": "#",
+  "prompt": "> "
+}

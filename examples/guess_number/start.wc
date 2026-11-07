@@ -1,0 +1,16 @@
+set secret = random(1, 100)
+set guess = 0
+set tries = 0
+say "I picked a number from 1 to 100."
+makeuserdoright guess != secret
+    say "Your guess:"
+    ask guess
+    set tries = tries + 1
+    if guess < secret
+        say "Higher!"
+    end
+    if guess > secret
+        say "Lower!"
+    end
+end
+say "Correct! Tries: " + str(tries)

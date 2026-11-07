@@ -1,0 +1,20 @@
+load standrt_gui
+wcsgstart
+Message_window ] title "Welcome" ] speak ("Click OK to continue") ] bg "white"
+Question_window ] speak ("Do you like Worse Code?") ] save answer
+if answer == "yes"
+    Success_window ] speak ("Great!")
+else
+    Warning_window ] speak ("Give it another try :)")
+end
+Input_window ] speak ("What is your name?") ] save name
+Info_window ] title "Hello" ] speak ("Nice to meet you, " + str(name))
+say "Hello from the black console!"
+say "What is 6 * 7?"
+ask n
+if n == 42
+    say "Correct!"
+else
+    say "Not quite."
+end
+wcsgstophere

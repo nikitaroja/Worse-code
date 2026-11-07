@@ -1,0 +1,27 @@
+say "First number:"
+ask a
+say "Operation (+ - * /):"
+ask op
+say "Second number:"
+ask b
+if op == "+"
+    say a + b
+else
+    if op == "-"
+        say a - b
+    else
+        if op == "*" or op == "x"
+            say a * b
+        else
+            if op == "/"
+                if b == 0
+                    say "You can't divide by zero"
+                else
+                    say a / b
+                end
+            else
+                say "Unknown operation"
+            end
+        end
+    end
+end
