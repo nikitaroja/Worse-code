@@ -2,7 +2,7 @@
 
 **A small programming language you can reshape to your taste.** Rename every keyword, open real windows, draw on a canvas and write games, all from plain text files and a single Python interpreter.
 
-`Version V.1` · Written in Python · Made on Windows · [Русская версия](README.ru.md)
+`Latest stable: Version 1b` · `In development: Version 2a` · Written in Python · Made on Windows · [Русская версия](README.ru.md)
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue) ![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue) ![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey)
 
@@ -18,7 +18,7 @@ say "Hello, " + name + "!"
 ## Features
 
 - Simple readable syntax: variables, `if / else`, loops, lists, expressions.
-- **Every keyword can be renamed**, in a JSON file or in the *WC Service Modifier* window.
+- **Every keyword can be renamed**, in a small JSON file.
 - **WCSG** (WC Standard GUI): ready-made windows (error, question, input, blank...), a black console window and the *MiniPaint* canvas with keyboard input.
 - Real games are possible: a complete Snake in about 50 lines ([examples/snake](examples/snake)).
 - **Executable maker**: drop a folder on a script and get a Windows `.exe`.
@@ -27,8 +27,14 @@ say "Hello, " + name + "!"
 
 ## Download
 
-- **Latest source:** press the green **Code** button, choose **Download ZIP** and unpack it.
-- **Releases:** open the **Releases** page of this repository. Versions marked *Pre-release* are test builds, the newest one without that mark is the stable version.
+- **Source code:** press the green **Code** button, choose **Download ZIP** and unpack it. This is the development version.
+- **Releases:** open the **Releases** page. It has the stable versions and the **WC Basic Pack for Windows**, which comes with its own guide and demos.
+
+### Version numbers
+
+- A version is a number plus a letter: `Version 1a`, `Version 1b`, `Version 2a`. The number is the generation of the language, the letter is the release inside it. The newest release without the *Pre-release* mark is the stable one.
+- A test build of the next version is named `<current>-<next>-devNN`, for example `Version 1b-2a-dev01`. It is published as a **Pre-release** (a *Developer Beta*) and may be unstable.
+- Git tags follow the titles: `version-1b`, `version-1b-2a-dev01`.
 
 ## Quick start
 
@@ -155,8 +161,6 @@ Copy `wc_config.example.json` to `wc_config.json` and keep only the words you wa
 
 Settings are layered: built-in defaults, then `wc_config.json` next to `wc.py`, then `wc_config.json` next to your program (so every project can have its own words). A command must be a single word, all commands must differ, and none may start with the comment symbol.
 
-You can also edit everything in a window: `python wc_modifier.py` (**WC Service Modifier**: keyword editor, built-in reference, program launcher). Its interface is Russian for now.
-
 ## WCSG: windows, console and canvas
 
 ```
@@ -232,6 +236,8 @@ Run any of them: `python wc.py examples/snake/start.wc`.
 
 ## Build a Windows .exe
 
+*This tool is still in beta.*
+
 1. Put your program in a folder with a `start.wc` file.
 2. Drag the folder onto `wc_exe_maker.py`.
 3. Take the `<folder>_release` folder it creates: it holds your files, the interpreter and the `.exe`.
@@ -240,7 +246,7 @@ The `.exe` looks for Python on the computer. If there is none and the program fo
 
 ## Plugins
 
-Plugins add commands and functions without editing the core. Run `python wc_plugin_manager.py`, choose your project folder and install what you need: **Standard** plugins (`pause`, `mathplus`, `beep`, `storage`), **User** plugins and **Hotfixes**. The manager edits your project's `wc_config.json` and, if needed, adds the plugin hooks to `wc.py`. How to write your own: [docs/PLUGINS.md](docs/PLUGINS.md).
+Plugins (a **developer beta**, planned for Version 2a) add commands and functions without editing the core. Run `python wc_plugin_manager.py`, choose your project folder and install what you need: **Standard** plugins (`pause`, `mathplus`, `beep`, `storage`), **User** plugins and **Hotfixes**. The manager edits your project's `wc_config.json` and, if needed, adds the plugin hooks to `wc.py`. How to write your own: [docs/PLUGINS.md](docs/PLUGINS.md).
 
 ## Safety
 
@@ -253,7 +259,6 @@ WC evaluates expressions with Python's `eval` and `exec`. A `.wc` program can th
 
 - No user-defined functions and no `elif` yet.
 - `draw` takes one variable name.
-- The Modifier interface is in Russian.
 - Console hiding and the executable maker target Windows.
 
 ## Roadmap
@@ -263,7 +268,6 @@ Ideas, not promises:
 - user-defined functions and `elif`
 - mouse input on the canvas and sounds
 - an `.exe` that carries Python inside, so no installer is needed
-- an English interface for the Modifier
 - new plugins with every version
 
 ## Contributing
