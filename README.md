@@ -4,10 +4,16 @@
 
 `Version V.1` · Written in Python · Made on Windows · [Русская версия](README.ru.md)
 
+![License: MIT](https://img.shields.io/badge/license-MIT-blue) ![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue) ![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey)
+
 ```
 set name = "world"
 say "Hello, " + name + "!"
 ```
+
+## Contents
+
+[Features](#features) · [Download](#download) · [Quick start](#quick-start) · [The language in five minutes](#the-language-in-five-minutes) · [Keywords](#keywords) · [Make the language yours](#make-the-language-yours) · [WCSG](#wcsg-windows-console-and-canvas) · [Plugins](#plugins) · [Examples](#examples) · [Build a .exe](#build-a-windows-exe) · [Roadmap](#roadmap)
 
 ## Features
 
@@ -16,7 +22,13 @@ say "Hello, " + name + "!"
 - **WCSG** (WC Standard GUI): ready-made windows (error, question, input, blank...), a black console window and the *MiniPaint* canvas with keyboard input.
 - Real games are possible: a complete Snake in about 50 lines ([examples/snake](examples/snake)).
 - **Executable maker**: drop a folder on a script and get a Windows `.exe`.
+- **Plugins**: a plugin manager adds commands and functions to your project, with Standard, User and Hotfix categories.
 - The interpreter is plain Python with no required third-party packages (Pillow is optional for `.jpg` icons, PyInstaller is only used by the executable maker).
+
+## Download
+
+- **Latest source:** press the green **Code** button, choose **Download ZIP** and unpack it.
+- **Releases:** open the **Releases** page of this repository. Versions marked *Pre-release* are test builds, the newest one without that mark is the stable version.
 
 ## Quick start
 
@@ -224,9 +236,16 @@ Run any of them: `python wc.py examples/snake/start.wc`.
 2. Drag the folder onto `wc_exe_maker.py`.
 3. Take the `<folder>_release` folder it creates: it holds your files, the interpreter and the `.exe`.
 
-The `.exe` looks for Python on the computer. If there is none, it uses `python_windows.exe` from its own folder (a full portable Python; the "embeddable" build has no tkinter). Without both it shows "Python is required, but not installed". The maker installs PyInstaller once. Do not commit `.exe` files to git, attach them to a GitHub Release instead.
+The `.exe` looks for Python on the computer. If there is none and the program folder contains `python_windows.exe` (the official Python installer from python.org, renamed), it asks permission, installs Python silently for the current user (no administrator rights needed) and starts the program. Without an installer it shows "Python is required, but not installed". The maker installs PyInstaller once. Do not commit `.exe` files to git (the Python installer is also too big for the web uploader), attach them to a GitHub Release instead.
+
+## Plugins
+
+Plugins add commands and functions without editing the core. Run `python wc_plugin_manager.py`, choose your project folder and install what you need: **Standard** plugins (`pause`, `mathplus`, `beep`, `storage`), **User** plugins and **Hotfixes**. The manager edits your project's `wc_config.json` and, if needed, adds the plugin hooks to `wc.py`. How to write your own: [docs/PLUGINS.md](docs/PLUGINS.md).
 
 ## Safety
+
+Plugins are Python code too, so install only plugins you trust.
+
 
 WC evaluates expressions with Python's `eval` and `exec`. A `.wc` program can therefore do anything a Python script can. Only run programs you trust.
 
@@ -234,8 +253,19 @@ WC evaluates expressions with Python's `eval` and `exec`. A `.wc` program can th
 
 - No user-defined functions and no `elif` yet.
 - `draw` takes one variable name.
+- The Modifier interface is in Russian.
 - Console hiding and the executable maker target Windows.
+
+## Roadmap
+
+Ideas, not promises:
+
+- user-defined functions and `elif`
+- mouse input on the canvas and sounds
+- an `.exe` that carries Python inside, so no installer is needed
+- an English interface for the Modifier
+- new plugins with every version
 
 ## Contributing
 
-Ideas and pull requests are welcome. Read the [Developer Guide](docs/DEVELOPER_GUIDE.md) first. Put your own programs into [projects](projects). Licensed under the MIT License.
+Ideas and pull requests are welcome. Read the [Developer Guide](docs/DEVELOPER_GUIDE.md) first, and the [plugin guide](docs/PLUGINS.md) if you want to write a plugin. Put your own programs into [projects](projects). Licensed under the MIT License.
