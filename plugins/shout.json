@@ -1,0 +1,12 @@
+{
+  "id": "shout",
+  "name": "Shout (example user plugin)",
+  "version": "1.0",
+  "author": "You",
+  "description": "A tiny template for your own plugins: the shout command prints a value in capital letters.",
+  "commands": {
+    "shout": "shout"
+  },
+  "functions": [],
+  "example": "shout \"hello\""
+}

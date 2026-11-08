@@ -1,0 +1,12 @@
+{
+  "id": "beep",
+  "name": "Beep",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds the beep command: frequency and length in milliseconds are optional. Plays a real tone on Windows.",
+  "commands": {
+    "beep": "beep"
+  },
+  "functions": [],
+  "example": "beep 880, 200"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mathplus",
+  "name": "Math Plus",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Extra math functions for expressions: clamp keeps a value inside a range, sign gives -1, 0 or 1, avg is the average of a list.",
+  "commands": {},
+  "functions": [
+    "clamp",
+    "sign",
+    "avg"
+  ],
+  "example": "set x = clamp(x, 0, 19)"
+}

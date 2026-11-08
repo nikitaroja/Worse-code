@@ -1,0 +1,12 @@
+{
+  "id": "pause",
+  "name": "Pause",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds the pause command. It waits for Enter (or the Done button of the WCSG console) and can show a message.",
+  "commands": {
+    "pause": "pause"
+  },
+  "functions": [],
+  "example": "pause \"Press Enter to go on\""
+}

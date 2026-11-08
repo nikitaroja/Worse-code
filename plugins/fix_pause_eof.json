@@ -1,0 +1,14 @@
+{
+  "id": "fix_pause_eof",
+  "name": "Fix: --pause on closed input",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Stops wc.py from crashing with EOFError at the end of a program started with --pause when there is no keyboard input (for example from a script).",
+  "patches": [
+    {
+      "file": "wc.py",
+      "find": "    if pause:\n        input(\"\\nPress Enter to close window...\")\n",
+      "replace": "    if pause:\n        try:\n            input(\"\\nPress Enter to close window...\")\n        except EOFError:\n            pass\n"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Worse Code plugin list.
+# One plugin id per line. Details are in plugins/<id>.json, code in plugins/<id>.py.
+
+[standard]
+pause
+mathplus
+beep
+storage
+
+[user]
+shout
+
+[hotfix]
+fix_pause_eof

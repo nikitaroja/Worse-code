@@ -1,0 +1,14 @@
+{
+  "id": "storage",
+  "name": "Storage",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Remembers values between runs in storage.json next to the program. The store command saves a value, the recall function reads it. Good for high scores.",
+  "commands": {
+    "store": "store"
+  },
+  "functions": [
+    "recall"
+  ],
+  "example": "store best = score    then    recall(\"best\", 0)"
+}
