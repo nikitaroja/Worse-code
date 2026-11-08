@@ -41,13 +41,7 @@ say "Привет, " + name + "!"
 
 **Требования:** Python 3.8 или новее с tkinter (он есть в официальном установщике для Windows). Основная платформа Windows.
 
-```
-git clone https://github.com/nikitaroja/Worse-Code.git
-cd Worse-Code
-python wc.py examples/hello/start.wc
-```
-
-Или скачай ZIP с GitHub, распакуй и выполни последнюю команду.
+Скачай WCBP с вкладки Releases
 
 Программа это текстовый файл в кодировке UTF-8 с расширением `.wc`:
 
