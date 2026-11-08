@@ -1,0 +1,12 @@
+{
+  "id": "typic",
+  "name": "Typic",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds the typic command, which types text one character at a time.",
+  "commands": {
+    "typic": "typic"
+  },
+  "functions": [],
+  "example": "typic \"Hello, world!\""
+}

@@ -1,0 +1,18 @@
+{
+  "id": "playlist",
+  "name": "Playlist",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Plays a list of WAV or MP3 tracks sequentially. It requires the Sounds plugin, loops from the first track by default, and can advance to the next track when a configured key is pressed.",
+  "commands": {
+    "playlist": "playlist",
+    "track": "track",
+    "blocklast": "blocklast",
+    "changenow": "changenow"
+  },
+  "functions": [],
+  "depends": [
+    "sounds"
+  ],
+  "example": "playlist\ntrack \"1\" = \"1.wav\"\ntrack \"2\" = \"2.wav\"\nblocklast = true\nchangenow:key \"ENTER\""
+}

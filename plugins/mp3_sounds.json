@@ -1,0 +1,29 @@
+{
+  "id": "mp3_sounds",
+  "name": "Hotfix: MP3 support for Sounds",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds Windows Media Control playback for MP3 files to an installed Sounds plugin.",
+  "patches": [
+    {
+      "file": "plugins/sounds.py",
+      "find": "import ast\nimport os\n\n\ndef play_file(path, wait=False):\n    import winsound\n\n    flags = winsound.SND_FILENAME\n    if not wait:\n        flags |= winsound.SND_ASYNC\n    winsound.PlaySound(path, flags)\n\n\ndef stop_playback():\n    import winsound\n\n    winsound.PlaySound(None, 0)\n",
+      "replace": "import ast\nimport ctypes\nimport itertools\nimport os\n\n\n_mci_alias = None\n_mci_ids = itertools.count(1)\n\n\ndef _mci(command):\n    error = ctypes.windll.winmm.mciSendStringW(command, None, 0, None)\n    if error:\n        message = ctypes.create_unicode_buffer(256)\n        ctypes.windll.winmm.mciGetErrorStringW(error, message, len(message))\n        raise RuntimeError(message.value or f\"MCI error {error}\")\n\n\ndef _close_mci_alias(alias, stop=False):\n    global _mci_alias\n    try:\n        if stop:\n            _mci(f\"stop {alias}\")\n    finally:\n        try:\n            _mci(f\"close {alias}\")\n        finally:\n            if _mci_alias == alias:\n                _mci_alias = None\n\n\ndef play_file(path, wait=False):\n    global _mci_alias\n\n    if os.path.splitext(path)[1].lower() == \".wav\":\n        import winsound\n\n        flags = winsound.SND_FILENAME\n        if not wait:\n            flags |= winsound.SND_ASYNC\n        winsound.PlaySound(path, flags)\n        return\n\n    if _mci_alias is not None:\n        _close_mci_alias(_mci_alias, stop=True)\n\n    alias = f\"wc_sound_{next(_mci_ids)}\"\n    _mci(f'open \"{os.path.abspath(path)}\" type mpegvideo alias {alias}')\n    _mci_alias = alias\n    try:\n        _mci(f\"play {alias}\" + (\" wait\" if wait else \"\"))\n    except Exception:\n        _close_mci_alias(alias, stop=True)\n        raise\n    finally:\n        if wait and _mci_alias == alias:\n            _close_mci_alias(alias)\n\n\ndef stop_playback():\n    if _mci_alias is not None:\n        _mci(f\"stop {_mci_alias}\")\n        return\n    import winsound\n\n    winsound.PlaySound(None, 0)\n\n\n"
+    },
+    {
+      "file": "plugins/sounds.py",
+      "find": "        if os.path.splitext(path)[1].lower() != \".wav\":\n            raise ValueError(\"Sounds supports .wav files only\")\n        if not os.path.isfile(path):\n            raise ValueError(f\"Sound file not found: {path}\")\n\n        try:\n            import winsound\n        except ImportError as error:\n            raise ValueError(\"The Sounds plugin requires Windows\") from error\n",
+      "replace": "        if os.path.splitext(path)[1].lower() not in (\".wav\", \".mp3\"):\n            raise ValueError(\"Sounds supports .wav and .mp3 files only\")\n        if not os.path.isfile(path):\n            raise ValueError(f\"Sound file not found: {path}\")\n\n        try:\n            if os.path.splitext(path)[1].lower() == \".wav\":\n                import winsound\n            elif os.name != \"nt\":\n                raise ImportError(\"MP3 playback uses Windows Media Control\")\n        except ImportError as error:\n            raise ValueError(\"The Sounds plugin requires Windows\") from error\n"
+    },
+    {
+      "file": "plugins/sounds.py",
+      "find": "            try:\n                sound = ast.literal_eval(argument)\n            except (SyntaxError, ValueError) as error:\n                raise ValueError(\"use: play file.wav\") from error\n            if not isinstance(sound, str) or not sound:\n                raise ValueError(\"use: play file.wav\")\n",
+      "replace": "            try:\n                sound = ast.literal_eval(argument)\n            except (SyntaxError, ValueError) as error:\n                raise ValueError(\"use: play file.wav or file.mp3\") from error\n            if not isinstance(sound, str) or not sound:\n                raise ValueError(\"use: play file.wav or file.mp3\")\n"
+    },
+    {
+      "file": "plugins/sounds.py",
+      "find": "        if not argument:\n            raise ValueError(\"use: play file.wav\")\n",
+      "replace": "        if not argument:\n            raise ValueError(\"use: play file.wav or file.mp3\")\n"
+    }
+  ]
+}

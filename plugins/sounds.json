@@ -1,0 +1,13 @@
+{
+  "id": "sounds",
+  "name": "Sounds",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds the play command for playing .wav and .mp3 files from a project. Playback is asynchronous, so the program continues while the sound plays.",
+  "commands": {
+    "play": "play",
+    "sound_end": "sound_end"
+  },
+  "functions": [],
+  "example": "play /sounds/music.mp3, then sound_end to stop playback"
+}

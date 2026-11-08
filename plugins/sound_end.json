@@ -1,0 +1,14 @@
+{
+  "id": "sound_end",
+  "name": "Hotfix: sound_end command",
+  "version": "1.0",
+  "author": "Worse Code",
+  "description": "Adds the sound_end command to an already installed Sounds plugin so a playing WAV or MP3 can be stopped.",
+  "patches": [
+    {
+      "file": "plugins/sounds.py",
+      "find": "    wc.command(\"play\", \"play\", play)\n",
+      "replace": "    def sound_end(ctx, rest):\n        if rest.strip():\n            raise ValueError(\"use: sound_end\")\n        try:\n            if \"_mci_alias\" in globals() and _mci_alias is not None:\n                _close_mci_alias(_mci_alias, stop=True)\n            else:\n                stop_playback()\n        except RuntimeError as error:\n            raise ValueError(f\"Could not stop sound: {error}\") from error\n\n    for key, default, handler in (\n        (\"play\", \"play\", play),\n        (\"sound_end\", \"sound_end\", sound_end),\n    ):\n        wc.command(key, default, handler)\n"
+    }
+  ]
+}
