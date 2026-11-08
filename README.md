@@ -41,13 +41,7 @@ say "Hello, " + name + "!"
 
 **Requirements:** Python 3.8 or newer with tkinter (included in the official Windows installer). Windows is the main target.
 
-```
-git clone https://github.com/nikitaroja/Worse-Code.git
-cd Worse-Code
-python wc.py examples/hello/start.wc
-```
-
-Or download the ZIP from GitHub, unpack it and run the last command.
+install WC Basic pack via releases tab
 
 A program is a UTF-8 text file with the `.wc` extension:
 
