@@ -28,7 +28,7 @@ say "Hello, " + name + "!"
 
 ## Download
 
-- **Source code:** press the green **Code** button, choose **Download ZIP** and unpack it. This is the development version.
+- **Source code:** press the green **Code** button, choose **Download ZIP** and unpack it. This is the development version. BUT WE DONT RWCOMMEND INSTALLING THIS WAY! its very unstable
 - **Releases:** open the **Releases** page. It has the stable versions and the **WC Basic Pack for Windows**, which comes with its own guide and demos.
 
 ### Version numbers
