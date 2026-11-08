@@ -234,7 +234,6 @@ WC evaluates expressions with Python's `eval` and `exec`. A `.wc` program can th
 
 - No user-defined functions and no `elif` yet.
 - `draw` takes one variable name.
-- The Modifier interface is in Russian.
 - Console hiding and the executable maker target Windows.
 
 ## Contributing
