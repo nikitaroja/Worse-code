@@ -1,4 +1,5 @@
 # Worse Code (WC)
+# We highly recommend you to use BASIC PACK from releases
 
 **A small programming language you can reshape to your taste.** Rename every keyword, open real windows, draw on a canvas and write games, all from plain text files and a single Python interpreter.
 
