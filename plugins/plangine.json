@@ -1,0 +1,24 @@
+{
+  "id": "plangine",
+  "name": "Plangine",
+  "version": "1a",
+  "author": "Worse Code",
+  "description": "Plangine 1a is a Tkinter-based 2D game plugin with player and object entities, keyboard or automatic movement, window-edge behavior, entry triggers, and a playable Tetris demo mode.",
+  "commands": {
+    "Plangine-load": "Plangine-load",
+    "planginestarthere": "planginestarthere",
+    "planginend": "planginend",
+    "createwindow": "createwindow",
+    "create-entity_player": "create-entity_player",
+    "create-entity_block": "create-entity_block",
+    "create-entity_circle": "create-entity_circle",
+    "create-entity_enemy": "create-entity_enemy",
+    "create-entity_coin": "create-entity_coin",
+    "changecolor": "changecolor",
+    "kill": "kill",
+    "create-trigger": "create-trigger",
+    "tetris": "tetris"
+  },
+  "functions": [],
+  "example": "Plangine-load plangine; planginestarthere; createwindow]800x600]bg white]textfont Arial; create-entity_player]50,50]moveto-wasd-arrow; planginend"
+}
